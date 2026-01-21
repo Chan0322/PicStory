@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
 import loginImg from "../assets/LoginImage.jpg";
 
 function LoginPage({ onLogin }) {
+  const [connectionMessage, setConnectionMessage] = useState("연결 확인 중..");
+
+  useEffect(() => {
+    // 백엔드 API 호출
+    fetch("http://localhost:8080/api/test")
+      .then((response) => response.text())
+      .then((data) => {
+        setConnectionMessage(data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        setConnectionMessage("서버가 꺼져있습니다.");
+      });
+  }, []);
+
   return (
     <div className="login-container">
+      {/* 백엔드와 연결 테스트 메시지 */}
+      <div
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          color: "red",
+          fontSize: "20px",
+        }}
+      >
+        서버 상태 : {connectionMessage}
+      </div>
       <div className="login-content">
         {/* 왼쪽 이미지 */}
         <div className="login-image-section">
