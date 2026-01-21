@@ -26,13 +26,8 @@ back/*.iml
 back/*.ipr
 back/*.iws
 
-# Gradle 래퍼 (혼자 할 때는 올려도 되지만, 보통은 환경마다 다를 수 있어 제외하기도 합니다)
-# 하지만 포트폴리오용으로 누구나 바로 실행하게 하려면 아래 두 개는 주석 처리(제외 안함)해도 됩니다.
-# back/gradle/
-# back/gradlew
-# back/gradlew.bat
 
-# 보안 및 개인 설정
+#보안 및 개인 설정
 back/src/main/resources/application.properties
 
 # 로그 파일
