@@ -1,0 +1,34 @@
+# --- OS & IDE (공통) ---
+.DS_Store
+Thumbs.db
+*.local
+.vscode/
+.idea/
+
+# --- Front-end (React / Vite) ---
+front/node_modules/
+front/dist/
+front/.env*
+
+# --- Back-end (Spring Boot / Gradle) ---
+# Gradle 빌드 결과물 및 캐시
+back/.gradle/
+back/build/
+back/bin/
+back/out/
+
+# IDE 관련
+back/.settings/
+back/.classpath
+back/.project
+back/.metadata/
+back/*.iml
+back/*.ipr
+back/*.iws
+
+
+#보안 및 개인 설정
+back/src/main/resources/application.properties
+
+# 로그 파일
+*.log
