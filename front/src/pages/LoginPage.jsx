@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
 import loginImg from "../assets/LoginImage.jpg";
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, onShowSignup }) {
   const [connectionMessage, setConnectionMessage] = useState("연결 확인 중..");
 
   useEffect(() => {
@@ -67,7 +67,9 @@ function LoginPage({ onLogin }) {
           <div className="signup-box">
             <p>
               계정이 없으신가요?{" "}
-              <span className="signup-link">가입하기개발중입니다</span>
+              <span className="link" onClick={onShowSignup}>
+                가입하기
+              </span>
             </p>
           </div>
         </div>

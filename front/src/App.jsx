@@ -1,68 +1,41 @@
 import { useState } from "react";
 
 import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
 
 function App() {
-  // isLoggedIn = false -> 로그인 페이지, true -> 메인 페이지
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [view, setView] = useState("login");
 
-  // 로그인 버튼 클릭
-  const handleLogin = () => {
-    setIsLoggedIn(true);
+  // 로그인 성공 시
+  const handleLoginSuccess = () => {
+    setView("feed");
   };
 
   return (
     <div className="App">
-      {isLoggedIn ? (
-        // 로그인 성공
+      {/* 메인 피드(로그인 성공 시) */}
+      {view === "feed" && (
         <div style={{ textAlign: "center" }}>
-          <nav style={{ borderBottom: "1px solid #dbdbdb", padding: "10px" }}>
+          <nav style={{ borderBottom: "1px solid gray", padding: "10px" }}>
             <h1>PicStory Feed</h1>
           </nav>
-          <h2>PicStory 메인 피드 개발중입니다.</h2>
-          <button onClick={() => setIsLoggedIn(false)}>로그아웃</button>
+          <h2>PicStory 메인 피드 개발 중입니다... 빠른 시일 내에 만나요!😀</h2>
+          <button onClick={() => setView("login")}>로그아웃</button>
         </div>
-      ) : (
-        // 로그인 전
-        <LoginPage onLogin={handleLogin} />
       )}
+
+      {/* 로그인 페이지 */}
+      {view === "login" && (
+        <LoginPage
+          onLogin={handleLoginSuccess}
+          onShowSignup={() => setView("signup")}
+        />
+      )}
+
+      {/* 회원가입 페이지 */}
+      {view === "signup" && <SignupPage onShowLogin={() => setView("login")} />}
     </div>
   );
 }
 
 export default App;
-
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App
