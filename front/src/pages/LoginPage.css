@@ -61,7 +61,7 @@
 
 .login-btn {
   width: 100%;
-  background-color: orange;
+  background-color: lightseagreen;
   color: white;
   border: none;
   padding: 5px 0;
@@ -99,7 +99,7 @@
 
 .facebook-login-btn {
   width: 100%;
-  background-color: orange;
+  background-color: lightseagreen;
   color: white;
   border: none;
   padding: 7px;
@@ -109,7 +109,7 @@
 }
 
 .link {
-  color: orange;
+  color: lightseagreen;
   font-weight: bold;
   cursor: pointer;
   margin-left: 5px;
