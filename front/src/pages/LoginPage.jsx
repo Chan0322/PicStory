@@ -41,14 +41,20 @@ function LoginPage({ onLogin, onShowSignup }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
+        credentials: "include",
       });
       // 백엔드에서 받은 응답
-      const result = await response.text();
-      if (result === "로그인 되었습니다.") {
-        onLogin(); // 메인 피드로 이동
+      // 로그인 성공
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("nickname", data.nickname);
+        localStorage.setItem("accessToken", data.accessToken);
+
+        onLogin();
       } else {
         // 로그인 실패
-        alert(result);
+        const errorText = await response.text();
+        alert(errorText);
       }
     } catch (error) {
       console.error("서버에러: ", error);
